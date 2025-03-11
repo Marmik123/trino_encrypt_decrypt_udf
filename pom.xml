@@ -15,6 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   <maven.compiler.source>22</maven.compiler.source>
   <maven.compiler.target>22</maven.compiler.target>
+    <dep.trino.version>453</dep.trino.version>
   </properties>
 
   <dependencyManagement>
@@ -26,11 +27,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
-
-
-
-
 
     </dependencies>
   </dependencyManagement>
@@ -53,7 +49,7 @@
     <dependency>
       <groupId>io.trino</groupId>
       <artifactId>trino-spi</artifactId>
-      <version>453</version>
+      <version>${dep.trino.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -67,8 +63,6 @@
       <artifactId>jackson-annotations</artifactId>
       <version>2.18.2</version>
     </dependency>
-
-
 
     <!-- https://mvnrepository.com/artifact/io.airlift/slice -->
     <dependency>
@@ -93,8 +87,6 @@
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-commons</artifactId>
     </dependency>
-
-
   </dependencies>
 
   <build>

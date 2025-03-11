@@ -1,4 +1,4 @@
-package com.crisil.trino.plugin;
+package com.crisil.trino.udf;
 
 import io.trino.spi.function.Description;
 import io.trino.spi.function.ScalarFunction;
@@ -21,12 +21,15 @@ public class ValidatePAN {
             @SqlNullable @SqlType(StandardTypes.VARCHAR) String pan) {
         try {
             if (pan == null || pan.isEmpty()) {
+                LOG.error("PAN is null");
+
                 return false;
             } else {
                 return PATTERN.matcher(pan).matches();
             }
 
         } catch (Exception e) {
+            LOG.error("Something went wrong",e);
             throw new RuntimeException(e);
         }
     }

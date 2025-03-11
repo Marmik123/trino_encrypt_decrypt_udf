@@ -1,4 +1,4 @@
-package com.crisil.trino.plugin;
+package com.crisil.trino.udf;
 
 import io.trino.spi.function.Description;
 import io.trino.spi.function.ScalarFunction;
@@ -21,12 +21,15 @@ public class ValidateMobileNo {
             @SqlNullable @SqlType(StandardTypes.VARCHAR) String mobile) {
         try {
             if (mobile == null || mobile.isEmpty()) {
+                LOG.error("mobile number is null");
                 return false;
             } else {
                 return PATTERN.matcher(mobile.toString().trim()).matches();
             }
 
         } catch (Exception e) {
+            LOG.error("Something went wrong",e);
+
             throw new RuntimeException(e);
         }
     }

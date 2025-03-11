@@ -1,4 +1,4 @@
-package com.crisil.trino.plugin;
+package com.crisil.trino.udf;
 
 import javax.crypto.SecretKey;
 import java.security.SecureRandom;
@@ -76,6 +76,7 @@ public class EncryptDecryptUDF {
     public static void main(String args[]){
         Slice encrypted = encrypt(Slices.utf8Slice("Hello! Trino"));
         Slice decrypted = decrypt(encrypted);
+
         LOG.info(decrypted.toString());
 
     }
